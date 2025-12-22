@@ -201,7 +201,13 @@ cython_debug/
 .cursorignore
 .cursorindexingignore
 
-# Marimo
+# Marimoasdsadas
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Data files
+data/
+
+# Large file
+vosk-models/

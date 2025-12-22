@@ -1,0 +1,4 @@
+num threads: 12
+decoding method: greedy_search
+Elapsed seconds: 50.335 s
+Real time factor (RTF): 50.335 / 522.545 = 0.096
