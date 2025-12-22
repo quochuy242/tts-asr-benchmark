@@ -43,21 +43,9 @@ setup() {
     echo "=== SETUP sherpa-onnx ==="
     
     # -------------------------
-    # Clone repo if needed
-    # -------------------------
-    if [[ ! -d sherpa-onnx ]]; then
-        echo "[INFO] Cloning sherpa-onnx repo"
-        git clone https://github.com/k2-fsa/sherpa-onnx
-    else
-        echo "[SKIP] sherpa-onnx repo already exists"
-    fi
-    
-    cd sherpa-onnx
-    
-    # -------------------------
     # Build if binary not exists
     # -------------------------
-    if [[ ! -x build/bin/sherpa-onnx-offline ]]; then
+    if [[ ! -d build/bin ]]; then
         echo "[INFO] Building sherpa-onnx"
         mkdir -p build
         cd build
@@ -68,7 +56,7 @@ setup() {
         make -j"$(nproc)"
         cd ..
     else
-        echo "[SKIP] sherpa-onnx-offline already built"
+        echo "[SKIP] sherp-onnx already built"
     fi
     
     # -------------------------
@@ -98,7 +86,7 @@ setup() {
     echo "=== SETUP DONE ==="
     cd ..
 }
-setup
+# setup
 
 # -------------------------
 # FP32 model

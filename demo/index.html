@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>ASR Demo</h2>
+<input type="file" id="wav">
+<button onclick="asr()">Transcribe</button>
+<pre id="asr_out"></pre>
+
+<h2>TTS Demo</h2>
+<input type="text" id="text" value="Xin chào Việt Nam">
+<button onclick="tts()">Speak</button>
+<audio id="audio" controls></audio>
+
+<script>
+async function asr() {
+  const file = document.getElementById("wav").files[0];
+  const fd = new FormData();
+  fd.append("file", file);
+
+  const r = await fetch("/asr", {method: "POST", body: fd});
+  const j = await r.json();
+  document.getElementById("asr_out").innerText = j.text;
+}
+
+async function tts() {
+  const text = document.getElementById("text").value;
+  const r = await fetch("/tts", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({text})
+  });
+
+  const blob = await r.blob();
+  document.getElementById("audio").src = URL.createObjectURL(blob);
+}
+</script>
+</body>
+</html>
