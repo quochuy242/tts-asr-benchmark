@@ -92,6 +92,8 @@ def recognize(
         model.decode_streams(streams)
         results.extend(s.result.text for s in streams)
 
+    del streams  # interupt OOM
+
     elapsed = time.time() - start_t
     print(f"[INFO] RTF: {elapsed / total_duration:.3f}")
     return results
