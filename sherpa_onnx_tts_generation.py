@@ -17,6 +17,6 @@ if not config.validate():
     raise ValueError("Please check your config")
 
 tts = sherpa_onnx.OfflineTts(config)
-audio = tts.generate(text="Nước cũ đào gỗ mới, sông cũ chảy nước mới", sid=0, speed=1.0)
+audio = tts.generate(text="nói hệ điều hành Windows, WSL, Ubuntu, Arch mình setup đúng cho bạn.", sid=0, speed=1.0)
 
 sf.write("test.mp3", audio.samples, samplerate=audio.sample_rate)
